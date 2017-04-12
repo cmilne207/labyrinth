@@ -57,4 +57,8 @@ public class Deck{
   			return false;
   		}
   	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/cmilne207/labyrinth
