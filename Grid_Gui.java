@@ -19,7 +19,18 @@ public class Grid_Gui extends JFrame
   private JPanel TilePanel41; private JPanel TilePanel42; private JPanel TilePanel43; private JPanel TilePanel44; private JPanel TilePanel45;
   private JPanel TilePanel46; private JPanel TilePanel47; private JPanel TilePanel48; private JPanel TilePanel49;
   
-  private ImageIcon back = new ImageIcon("Tile1.jpg");
+   private JPanel blankpanel; private JPanel blankpanel2; private JPanel blankpanel3; private JPanel blankpanel4; private JPanel blankpanel5; 
+   private JPanel blankpanel6; private JPanel blankpanel7; private JPanel blankpanel8; private JPanel blankpanel9; private JPanel blankpanel10; 
+   private JPanel blankpanel11; private JPanel blankpanel12; private JPanel blankpanel13; private JPanel blankpanel14; private JPanel blankpanel15; 
+   private JPanel blankpanel16; private JPanel blankpanel17; private JPanel blankpanel18; private JPanel blankpanel19; private JPanel blankpanel20; 
+  
+  private JPanel ButtonPanel1; private JPanel ButtonPanel2; private JPanel ButtonPanel3;
+  private JPanel ButtonPanel4; private JPanel ButtonPanel5; private JPanel ButtonPanel6;
+  private JPanel ButtonPanel7; private JPanel ButtonPanel8; private JPanel ButtonPanel9;
+  private JPanel ButtonPanel10; private JPanel ButtonPanel11; private JPanel ButtonPanel12;
+  
+  
+  private ImageIcon back = new ImageIcon("Tile1.jpg"); private ImageIcon space = new ImageIcon("space.jpg"); 
   private JLabel Tile = new JLabel(back); private JLabel Tile3 = new JLabel(back);
   private JLabel Tile2 = new JLabel(back); private JLabel Tile5 = new JLabel(back);
   private JLabel Tile4 = new JLabel(back); private JLabel Tile7 = new JLabel(back); 
@@ -44,7 +55,11 @@ public class Grid_Gui extends JFrame
   private JLabel Tile42 = new JLabel(back); private JLabel Tile45 = new JLabel(back); 
   private JLabel Tile44 = new JLabel(back); private JLabel Tile47 = new JLabel(back); 
   private JLabel Tile46 = new JLabel(back); private JLabel Tile49 = new JLabel(back); 
-  private JLabel Tile48 = new JLabel(back); 
+  private JLabel Tile48 = new JLabel(back); private JButton Move;
+  
+  private JLabel blank = new JLabel(space); 
+  
+
  
   
   Tile tile1; Tile tile2; Tile tile3; Tile tile4; Tile tile5; Tile tile6; Tile tile7; 
@@ -58,19 +73,20 @@ public class Grid_Gui extends JFrame
   public Grid_Gui()
   { setTitle("Labrynth Game");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    setLayout(new GridLayout(7,7));
+    setLayout(new GridLayout(9,9));
     
     //Build the Panels
     buildTilePanels();
-    
-    add(TilePanel1); add(TilePanel2); add(TilePanel3) ;add(TilePanel4); add(TilePanel5); add(TilePanel6); add(TilePanel7);
-    add(TilePanel8); add(TilePanel9); add(TilePanel10) ;add(TilePanel11); add(TilePanel12); add(TilePanel13); add(TilePanel14);
-    add(TilePanel15); add(TilePanel16); add(TilePanel17) ;add(TilePanel18); add(TilePanel19); add(TilePanel20); add(TilePanel21);
-    add(TilePanel22); add(TilePanel23); add(TilePanel24) ;add(TilePanel25); add(TilePanel26); add(TilePanel27); add(TilePanel28);
-    add(TilePanel29); add(TilePanel30); add(TilePanel31) ;add(TilePanel32); add(TilePanel33); add(TilePanel34); add(TilePanel35);
-    add(TilePanel36); add(TilePanel37); add(TilePanel38) ;add(TilePanel39); add(TilePanel40); add(TilePanel41); add(TilePanel42);
-    add(TilePanel43); add(TilePanel44); add(TilePanel45) ;add(TilePanel46); add(TilePanel47); add(TilePanel48); add(TilePanel49);
-    
+    buildButton();
+    add(blankpanel); add(blankpanel2); add(ButtonPanel1); add(blankpanel3); add(ButtonPanel2); add(blankpanel4); add(ButtonPanel3); add(blankpanel5); add(blankpanel6);
+    add(blankpanel7); add(TilePanel1); add(TilePanel2); add(TilePanel3) ;add(TilePanel4); add(TilePanel5); add(TilePanel6); add(TilePanel7); add(blankpanel8);
+    add(ButtonPanel4); add(TilePanel8); add(TilePanel9); add(TilePanel10) ;add(TilePanel11); add(TilePanel12); add(TilePanel13); add(TilePanel14); add(ButtonPanel5);
+    add(blankpanel9); add(TilePanel15); add(TilePanel16); add(TilePanel17) ;add(TilePanel18); add(TilePanel19); add(TilePanel20); add(TilePanel21); add(blankpanel10);
+    add(ButtonPanel6); add(TilePanel22); add(TilePanel23); add(TilePanel24) ;add(TilePanel25); add(TilePanel26); add(TilePanel27); add(TilePanel28);add(ButtonPanel7);
+    add(blankpanel11); add(TilePanel29); add(TilePanel30); add(TilePanel31) ;add(TilePanel32); add(TilePanel33); add(TilePanel34); add(TilePanel35);add(blankpanel12);
+    add(ButtonPanel8); add(TilePanel36); add(TilePanel37); add(TilePanel38) ;add(TilePanel39); add(TilePanel40); add(TilePanel41); add(TilePanel42);add(ButtonPanel9);
+    add(blankpanel13); add(TilePanel43); add(TilePanel44); add(TilePanel45) ;add(TilePanel46); add(TilePanel47); add(TilePanel48); add(TilePanel49);add(blankpanel14);
+    add(blankpanel15); add(blankpanel16); add(ButtonPanel10); add(blankpanel17); add(ButtonPanel11); add(blankpanel18); add(ButtonPanel12); add(blankpanel19); add(blankpanel20);
     
     pack();
     setVisible(true);
@@ -104,11 +120,40 @@ public class Grid_Gui extends JFrame
    TilePanel45 = new JPanel(); TilePanel45.add(Tile45); TilePanel46 = new JPanel(); TilePanel46.add(Tile46); 
    TilePanel47 = new JPanel(); TilePanel47.add(Tile47); TilePanel48 = new JPanel(); TilePanel48.add(Tile48); 
    TilePanel49 = new JPanel(); TilePanel49.add(Tile49); 
+   
+   blankpanel = new JPanel(); blankpanel.add(blank); blankpanel2 = new JPanel(); blankpanel2.add(blank); 
+   blankpanel3 = new JPanel(); blankpanel3.add(blank); blankpanel4 = new JPanel(); blankpanel4.add(blank); 
+   blankpanel5 = new JPanel(); blankpanel5.add(blank); blankpanel6 = new JPanel(); blankpanel6.add(blank); 
+   blankpanel7 = new JPanel(); blankpanel7.add(blank); blankpanel8 = new JPanel(); blankpanel8.add(blank); 
+   blankpanel9 = new JPanel(); blankpanel9.add(blank); blankpanel10 = new JPanel(); blankpanel10.add(blank); 
+   blankpanel11 = new JPanel(); blankpanel11.add(blank); blankpanel12 = new JPanel(); blankpanel12.add(blank); 
+   blankpanel13 = new JPanel(); blankpanel13.add(blank); blankpanel14 = new JPanel(); blankpanel14.add(blank); 
+   blankpanel15 = new JPanel(); blankpanel15.add(blank); blankpanel16 = new JPanel(); blankpanel16.add(blank); 
+   blankpanel17 = new JPanel(); blankpanel17.add(blank); blankpanel18 = new JPanel(); blankpanel18.add(blank); 
+   blankpanel19 = new JPanel(); blankpanel19.add(blank); blankpanel20 = new JPanel(); blankpanel20.add(blank); 
 
    
   
   
   }
+  
+  public void buildButton()
+  {
+   
+   ButtonPanel1 = new JPanel(); Move = new JButton("Down"); ButtonPanel1.add(Move);
+   ButtonPanel2 = new JPanel(); Move = new JButton("Down"); ButtonPanel2.add(Move);
+   ButtonPanel3 = new JPanel(); Move = new JButton("Down"); ButtonPanel3.add(Move);
+   ButtonPanel4 = new JPanel(); Move = new JButton("-->"); ButtonPanel4.add(Move);
+   ButtonPanel5 = new JPanel(); Move = new JButton("<--"); ButtonPanel5.add(Move);
+   ButtonPanel6 = new JPanel(); Move = new JButton("-->"); ButtonPanel6.add(Move);
+   ButtonPanel7 = new JPanel(); Move = new JButton("<--"); ButtonPanel7.add(Move);
+   ButtonPanel8 = new JPanel(); Move = new JButton("-->"); ButtonPanel8.add(Move);
+   ButtonPanel9 = new JPanel(); Move = new JButton("<--"); ButtonPanel9.add(Move);
+   ButtonPanel10 = new JPanel(); Move = new JButton("^"); ButtonPanel10.add(Move);
+   ButtonPanel11 = new JPanel(); Move = new JButton("^"); ButtonPanel11.add(Move);
+   ButtonPanel12 = new JPanel(); Move = new JButton("^"); ButtonPanel12.add(Move);
+  }
+
   
 
        
