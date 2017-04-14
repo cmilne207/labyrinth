@@ -1,33 +1,25 @@
-//Rrpresentation of a tile
+//Representation of a tile
 //Tile is a part of the maze
 //It has four different directions
-//Joe Pakulski
 
-import java.util.Arrays; 
-import java.util.*;
-
-
-public class Tile
-{     
-	private:
+public class Tile{     
 		//Variables
-		int index;					//index of this tile	
-		int treasure;				//index representing which treasure card this tile corresponds to
-		int curOrient;				//determines which of the four images that will be displayed
-		boolean playerOneOnTile;	//true when the player one is on this tile
-		boolean playerTwoOnTile;	//true when player two is on this tile
-		boolean north;				//true when this tile has a path north
-		boolean east;				//true when this tile has a path east
-		boolean south;				//true when this tile has a path south
-		boolean west;				//true when this tile has a path west
-		String orientOne;			//default orientation image 
-		String orientTwo;			//default orientation + 1 rotation right image
-		String orientThree;			//default orientation + 2 rotation right image
-		String orientFour;			//default orientation + 3 rotation right image
+		private int index;					//index of this tile	
+		private int treasure;				//index representing which treasure card this tile corresponds to
+		private int curOrient;				//determines which of the four images that will be displayed
+		private boolean playerOneOnTile;	//true when the player one is on this tile
+		private boolean playerTwoOnTile;	//true when player two is on this tile
+		private boolean north;				//true when this tile has a path north
+		private boolean east;				//true when this tile has a path east
+		private boolean south;				//true when this tile has a path south
+		private boolean west;				//true when this tile has a path west
+		private String orientOne;			//default orientation image 
+		private String orientTwo;			//default orientation + 1 rotation right image
+		private String orientThree;			//default orientation + 2 rotation right image
+		private String orientFour;			//default orientation + 3 rotation right image
 	
-	public:
 		//Constructors
-		//default constuctor
+		//default constructor
 		//takes all the needed values as argument and sets variables equal to them
 		//starts in orientation one
 		public Tile(int newIndex, int newTreasure, boolean newN, boolean newE, 
@@ -35,7 +27,7 @@ public class Tile
 			index = newIndex;
 			treasure = newTreasure;
 			north = newN;
-			east = newE
+			east = newE;
 			south = newS;
 			west = newW;
 			orientOne = newOne;
@@ -49,43 +41,43 @@ public class Tile
 		
 		//Getters
 		//return the treasure value for comparing to player's treasure card(s)
-		int getTreasure(){
+		public int getTreasure(){
 			return treasure;
 		}
 		
 		//return the boolean value representing if there is a path open in the respective direction
 		//north
-		boolean getNorth(){
+		public boolean getNorth(){
 			return north;
 		}
 		//east
-		boolean getEast(){
+		public boolean getEast(){
 			return east;
 		}
 		//south
-		boolean getSouth(){
+		public boolean getSouth(){
 			return south;
 		}
 		//west
-		boolean getWest(){
+		public boolean getWest(){
 			return west;
 		}
 		
 		//Setters
 		//change the value when the player's location changes
 		//player one
-		void setPlayerOneOnTile(bool newValue){
+		public void setPlayerOneOnTile(boolean newValue){
 			playerOneOnTile = newValue;
 		}
 		
 		//player two
-		void setPlayerTwoOnTile(bool newValue){
+		public void setPlayerTwoOnTile(boolean newValue){
 			playerTwoOnTile = newValue;
 		}
 		
 		//Functionality
 		//rotate the path values right and change orientation index to use a new picture
-		void rotateRight(){
+		public void rotateRight(){
 			//change the values representing if each side has a path
 			boolean tempSideBool;
 			tempSideBool = west;
@@ -105,7 +97,7 @@ public class Tile
 		}
 		
 		//rotate the path values left and change orientation index to use a new picture
-		void rotateLeft(){
+		public void rotateLeft(){
 			//change the values representing if each side has a path
 			boolean tempSideBool;
 			tempSideBool = east;
@@ -118,7 +110,7 @@ public class Tile
 			//subtract one since rotation left
 			curOrient--;
 					
-			//occurs when the orentation passes default
+			//occurs when the orientation passes default
 			if (curOrient == 0){
 				curOrient = 4;
 			}

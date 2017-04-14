@@ -40,19 +40,19 @@ public class Deck{
                 //if true change or leave it false
                 //north
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newNorth = true;
+                	newNorth = true;
                 }
                 //east
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newEast = true;
+                	newEast = true;
                 }
                 //south
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newSouth = true;
+                	newSouth = true;
                 }
                 //west
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newWest = true;
+                	newWest = true;
                 }
                 
                 //get image links
@@ -66,7 +66,7 @@ public class Deck{
                 		newSouth, newWest, newOne, newTwo, newThree, newFour);
                 
                 //add to special static tile deck
-                staticTile.add(newTile);
+                staticTiles.add(newTile);
             }
             
             //loop for the rest of the cards in the file 
@@ -79,7 +79,7 @@ public class Deck{
                 int newTreasure = Integer.parseInt(input.nextLine());
                 
                 //get north, east, south, and west path info
-                //instansiate
+                //default false, change if needed
                 boolean newNorth = false;
                 boolean newEast = false;
                 boolean newSouth = false;
@@ -87,19 +87,19 @@ public class Deck{
                 //if true change or leave it false
                 //north
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newNorth = true;
+                	newNorth = true;
                 }
                 //east
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newEast = true;
+                	newEast = true;
                 }
                 //south
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newSouth = true;
+                	newSouth = true;
                 }
                 //west
                 if (Integer.parseInt(input.nextLine()) == 1){
-                	boolean newWest = true;
+                	newWest = true;
                 }
                 
                 //get image links
