@@ -40,6 +40,10 @@ public class Tile{
 		}
 		
 		//Getters
+		public int getIndex(){
+			return index;
+		}
+		
 		//return the treasure value for comparing to player's treasure card(s)
 		public int getTreasure(){
 			return treasure;

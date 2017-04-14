@@ -14,19 +14,19 @@ public class Deck{
 	//creates empty deck, populates it, then shuffles it
 	public Deck(){
 		deck = new ArrayList<Tile>();
+		staticTiles = new ArrayList<Tile>();
 
 		////////////////////////////////////////////////////////////
 		try {
             File file = new File("tileBuilder.txt");
             Scanner input = new Scanner(file);
         
-            System.out.print(file.exists());
-        
             //for all static cards place tiles in special array so they 
             //can be placed where they belong in the grid
             for (int i = 0; i < 16; i++) {
             	//get index
-                int newIndex = Integer.parseInt(input.nextLine());
+            	String line = input.nextLine();
+                int newIndex = Integer.parseInt(line);
                 
                 //get treasure index
                 int newTreasure = Integer.parseInt(input.nextLine());
@@ -133,6 +133,12 @@ public class Deck{
 		Tile t = deck.remove(0);
 		return t;
 	}
+	
+	//returns card on the top of the static deck
+		public Tile staticDraw(){
+			Tile t = staticTiles.remove(0);
+			return t;
+		}
   
   	//returns the number of cards still in the deck
   	public int cardsRemaining(){  
