@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Deck{	
 	//Variables
-	ArrayList<Tile> deck;				//holds all of the tile cards that move
-	ArrayList<Tile> staticTiles;		//holds the tile cards that have a specific non changing position on the board
+	public ArrayList<Tile> deck;				//holds all of the tile cards that move
+	public ArrayList<Tile> staticTiles;		//holds the tile cards that have a specific non changing position on the board
 	
 	//constructor
 	//creates empty deck, populates it, then shuffles it
@@ -131,6 +131,12 @@ public class Deck{
 	//returns card on the top of the deck
 	public Tile draw(){
 		Tile t = deck.remove(0);
+		return t;
+	}
+	
+	//returns card on the top of the deck
+	public Tile drawStatic(){
+		Tile t = staticTiles.remove(0);
 		return t;
 	}
 	
