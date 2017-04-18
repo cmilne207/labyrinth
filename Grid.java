@@ -1,16 +1,17 @@
+package gridPopulation;
+
+import java.util.Random;
+
 //Rrpresentation of the board
 //7x7 grid treated as a two dimensional array
 //Joe Pakulski
 //Chris Milne
 
-import java.util.Arrays; 
-import java.util.*;
-
-
 public class Grid 
 {     
 	//variables
     private Tile[][] grid = new Tile[7][7];
+    Tile spareTile;
     
     //constructor
     public Grid(Deck newDeck){
@@ -23,9 +24,15 @@ public class Grid
     	
     	//fill movables
     	//rows with static cards
+    	Random r = new Random();
     	for(int row = 0; row < 7; row += 2){
     		for(int col = 1; col < 6; col += 2){
-    			grid[row][col] = newDeck.draw();
+    			Tile inUse = newDeck.draw();
+    			int randNum = r.nextInt(3);
+    			for(int i = 0; i < randNum; i++){
+    				inUse.rotateRight();
+    			}
+    			grid[row][col] = inUse;
     			System.out.println("test1");
     		}
     	}
@@ -33,15 +40,28 @@ public class Grid
     	//rows without static cards
 		for(int row = 1; row < 6; row += 2){
 			for(int col = 0; col < 7; col++){
-				grid[row][col] = newDeck.draw();
+				Tile inUse = newDeck.draw();
+    			int randNum = r.nextInt(4);
+    			for(int i = 0; i < randNum; i++){
+    				inUse.rotateRight();
+    			}
+    			grid[row][col] = inUse;
 				System.out.println("test2");
 			}
     	}
+		spareTile = newDeck.draw();
     }
     
     //getters
     public Tile[][] getGrid(){
     	return grid;
+    }
+    
+    public Tile getAt(int row, int col){
+    	return grid[row][col];
+    }
+    public Tile getSpare(){
+    	return spareTile;
     }
     
     //setters
