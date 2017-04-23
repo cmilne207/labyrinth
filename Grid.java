@@ -46,6 +46,8 @@ public class Grid
     			}
     			grid[row][col] = inUse;
 			}
+			grid[0][0].setPlayerOneOn(true);
+			grid[6][6].getPlayerTwoOn(true)
     	}
 		spareTile = newDeck.draw();
     }

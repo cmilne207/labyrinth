@@ -20,7 +20,7 @@ public class Deck{
 		try {
             File file = new File("tileBuilder.txt");
             Scanner input = new Scanner(file);
-        
+            
             //for all static cards place tiles in special array so they 
             //can be placed where they belong in the grid
             for (int i = 0; i < 16; i++) {
