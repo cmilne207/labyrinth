@@ -33,7 +33,6 @@ public class Grid
     				inUse.rotateRight();
     			}
     			grid[row][col] = inUse;
-    			System.out.println("test1");
     		}
     	}
     	
@@ -46,7 +45,6 @@ public class Grid
     				inUse.rotateRight();
     			}
     			grid[row][col] = inUse;
-				System.out.println("test2");
 			}
     	}
 		spareTile = newDeck.draw();

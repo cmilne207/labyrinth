@@ -1,5 +1,3 @@
-package gridPopulation;
-
 import java.util.Random;
 import java.util.ArrayList;
 import java.io.*;
@@ -27,8 +25,7 @@ public class Deck{
             //can be placed where they belong in the grid
             for (int i = 0; i < 16; i++) {
             	//get index
-            	String line = input.nextLine();
-                int newIndex = Integer.parseInt(line);
+                int newIndex = Integer.parseInt(input.nextLine());
                 
                 //get treasure index
                 int newTreasure = Integer.parseInt(input.nextLine());
@@ -58,14 +55,29 @@ public class Deck{
                 }
                 
                 //get image links
-                String newOne = input.nextLine();
-                String newTwo = input.nextLine();
-                String newThree = input.nextLine();
-                String newFour = input.nextLine();
+                String newOne = input.nextLine() + ".jpg";
+                String newTwo = input.nextLine() + ".jpg";
+                String newThree = input.nextLine() + ".jpg";
+                String newFour = input.nextLine() + ".jpg";
+                String newOneOne = input.nextLine() + ".jpg";
+                String newTwoOne = input.nextLine() + ".jpg";
+                String newThreeOne = input.nextLine() + ".jpg";
+                String newFourOne = input.nextLine() + ".jpg";
+                String newOneTwo = input.nextLine() + ".jpg";
+                String newTwoTwo = input.nextLine() + ".jpg";
+                String newThreeTwo = input.nextLine() + ".jpg";
+                String newFourTwo = input.nextLine() + ".jpg";
+                String newOneBoth = input.nextLine() + ".jpg";
+                String newTwoBoth = input.nextLine() + ".jpg";
+                String newThreeBoth = input.nextLine() + ".jpg";
+                String newFourBoth = input.nextLine() + ".jpg";
                 
                 //create the tile
                 Tile newTile = new Tile(newIndex, newTreasure, newNorth, newEast, 
-                		newSouth, newWest, newOne, newTwo, newThree, newFour);
+                		newSouth, newWest, newOne, newTwo, newThree, newFour, 
+                		newOneOne, newTwoOne, newThreeOne, newFourOne, 
+                		newOneTwo, newTwoTwo, newThreeTwo, newFourTwo, 
+                		newOneBoth, newTwoBoth, newThreeBoth, newFourBoth);
                 
                 //add to special static tile deck
                 staticTiles.add(newTile);
@@ -104,15 +116,30 @@ public class Deck{
                 	newWest = true;
                 }
                 
-                //get image links
-                String newOne = input.nextLine();
-                String newTwo = input.nextLine();
-                String newThree = input.nextLine();
-                String newFour = input.nextLine();
+              //get image links
+                String newOne = input.nextLine() + ".jpg";
+                String newTwo = input.nextLine() + ".jpg";
+                String newThree = input.nextLine() + ".jpg";
+                String newFour = input.nextLine() + ".jpg";
+                String newOneOne = input.nextLine() + ".jpg";
+                String newTwoOne = input.nextLine() + ".jpg";
+                String newThreeOne = input.nextLine() + ".jpg";
+                String newFourOne = input.nextLine() + ".jpg";
+                String newOneTwo = input.nextLine() + ".jpg";
+                String newTwoTwo = input.nextLine() + ".jpg";
+                String newThreeTwo = input.nextLine() + ".jpg";
+                String newFourTwo = input.nextLine() + ".jpg";
+                String newOneBoth = input.nextLine() + ".jpg";
+                String newTwoBoth = input.nextLine() + ".jpg";
+                String newThreeBoth = input.nextLine() + ".jpg";
+                String newFourBoth = input.nextLine() + ".jpg";
                 
                 //create the tile
                 Tile newTile = new Tile(newIndex, newTreasure, newNorth, newEast, 
-                		newSouth, newWest, newOne, newTwo, newThree, newFour);
+                		newSouth, newWest, newOne, newTwo, newThree, newFour, 
+                		newOneOne, newTwoOne, newThreeOne, newFourOne, 
+                		newOneTwo, newTwoTwo, newThreeTwo, newFourTwo, 
+                		newOneBoth, newTwoBoth, newThreeBoth, newFourBoth);
                 
                 //add to special static tile deck
                 deck.add(newTile);
