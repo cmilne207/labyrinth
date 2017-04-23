@@ -45,7 +45,7 @@ public class Grid_Gui extends JFrame
   
   //Panels for messages and counters etc.
   private JPanel MessagePanel; private JPanel TilePanel50; private JPanel MessagePanelTemp;
-  private JPanel ButtonPanelR; private JPanel ButtonPanelL;
+  private JPanel ButtonPanelR; private JPanel ButtonPanelL; JPanel ButtonStart;
   private JPanel TreasureCard;  private JPanel CounterPanel;
   
   //Images for tiles treasures and blank spaces
@@ -81,8 +81,8 @@ public class Grid_Gui extends JFrame
   private JLabel blank = new JLabel(space); private ImageIcon treasure = new ImageIcon("Treasure.jpg"); 
   
   private JLabel Message = new JLabel("Move Piece to: "); private JLabel Counter1 = new JLabel("Treasure: 0");
-  private JButton Rotate; private JLabel Tile50 = new JLabel(back);  private JLabel TreasureL = new JLabel(treasure);
-  private JLabel MessageTemp = new JLabel("Placeholder");
+  private JButton RotateL; private JButton RotateR; private JLabel Tile50 = new JLabel(back);  private JLabel TreasureL = new JLabel(treasure);
+  private JLabel MessageTemp = new JLabel("Placeholder"); private JButton Start;
 
  
   //Creation of the 50 tiles for panels
@@ -104,7 +104,7 @@ public class Grid_Gui extends JFrame
     buildTilePanels();
     buildCounterPanels();
     buildButton();
-    add(blankpanel); add(blankpanel2); add(ButtonPanel1); add(blankpanel3); add(ButtonPanel2); add(blankpanel4); add(ButtonPanel3); add(blankpanel5); add(blankpanel6); add(blankpanel_1); add(blankpanel_2);
+    add(blankpanel); add(blankpanel2); add(ButtonPanel1); add(blankpanel3); add(ButtonPanel2); add(blankpanel4); add(ButtonPanel3); add(blankpanel5); add(blankpanel6); add(ButtonStart); add(blankpanel_2);
     add(blankpanel7); add(TilePanel1); add(TilePanel2); add(TilePanel3) ;add(TilePanel4); add(TilePanel5); add(TilePanel6); add(TilePanel7); add(blankpanel8);add(blankpanel_3); add(TilePanel50); 
     add(ButtonPanel4); add(TilePanel8); add(TilePanel9); add(TilePanel10) ;add(TilePanel11); add(TilePanel12); add(TilePanel13); add(TilePanel14); add(ButtonPanel5); add(ButtonPanelL); add(ButtonPanelR);
     add(blankpanel9); add(TilePanel15); add(TilePanel16); add(TilePanel17) ;add(TilePanel18); add(TilePanel19); add(TilePanel20); add(TilePanel21); add(blankpanel10); add(blankpanel_4); add(blankpanel_5);
@@ -198,11 +198,122 @@ public class Grid_Gui extends JFrame
    ButtonPanel11 = new JPanel(); Move = new JButton("^"); ButtonPanel11.add(Move);
    ButtonPanel12 = new JPanel(); Move = new JButton("^"); ButtonPanel12.add(Move);
    
-   ButtonPanelR = new JPanel(); Rotate = new JButton("Left"); ButtonPanelR.add(Rotate);
-   ButtonPanelL = new JPanel(); Rotate = new JButton("Right"); ButtonPanelL.add(Rotate);
+   ButtonPanelR = new JPanel(); RotateL = new JButton("Left"); ButtonPanelR.add(RotateL);
+   ButtonPanelL = new JPanel(); RotateR = new JButton("Right"); ButtonPanelL.add(RotateR);
+   
+   ButtonStart = new JPanel(); Start = new JButton("Start"); ButtonStart.add(Start);
+   
+   Start.addActionListener(new ButtonListener1());
+   RotateL.addActionListener(new ButtonListener2());
+   RotateR.addActionListener(new ButtonListener3());
   }
 
+   /**
+   * This is the button to create a new game
+   * it creates a fresh deck and deals the tiles to the board
+   */
+  class ButtonListener1 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      //Create the Deck and Grid
+      Deck d = new Deck();
+      Grid g = new Grid(d);
+      
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile1 = g.getAt(0,0);ImageIcon t1 = new ImageIcon(tile1.getCurImage()); Tile.setIcon(t1);
+      tile2 = g.getAt(0,1);ImageIcon t2 = new ImageIcon(tile2.getCurImage()); Tile2.setIcon(t2);
+      tile3 = g.getAt(0,2);ImageIcon t3 = new ImageIcon(tile3.getCurImage()); Tile3.setIcon(t3);
+      tile4 = g.getAt(0,3);ImageIcon t4 = new ImageIcon(tile4.getCurImage()); Tile4.setIcon(t4);
+      tile5 = g.getAt(0,4);ImageIcon t5 = new ImageIcon(tile5.getCurImage()); Tile5.setIcon(t5);
+      tile6 = g.getAt(0,5);ImageIcon t6 = new ImageIcon(tile6.getCurImage()); Tile6.setIcon(t6);
+      tile7 = g.getAt(0,6);ImageIcon t7 = new ImageIcon(tile7.getCurImage()); Tile7.setIcon(t7);
+      
+      tile8 = g.getAt(1,0);ImageIcon t8 = new ImageIcon(tile8.getCurImage()); Tile8.setIcon(t8);
+      tile9 = g.getAt(1,1);ImageIcon t9 = new ImageIcon(tile9.getCurImage()); Tile9.setIcon(t9);
+      tile10 = g.getAt(1,2);ImageIcon t10 = new ImageIcon(tile10.getCurImage()); Tile10.setIcon(t10);
+      tile11 = g.getAt(1,3);ImageIcon t11 = new ImageIcon(tile11.getCurImage()); Tile11.setIcon(t11);
+      tile12 = g.getAt(1,4);ImageIcon t12 = new ImageIcon(tile12.getCurImage()); Tile12.setIcon(t12);
+      tile13 = g.getAt(1,5);ImageIcon t13 = new ImageIcon(tile13.getCurImage()); Tile13.setIcon(t13);
+      tile14 = g.getAt(1,6);ImageIcon t14 = new ImageIcon(tile14.getCurImage()); Tile14.setIcon(t14);
+      
+      tile15 = g.getAt(2,0);ImageIcon t15 = new ImageIcon(tile15.getCurImage()); Tile15.setIcon(t15);
+      tile16 = g.getAt(2,1);ImageIcon t16 = new ImageIcon(tile16.getCurImage()); Tile16.setIcon(t16);
+      tile17 = g.getAt(2,2);ImageIcon t17 = new ImageIcon(tile17.getCurImage()); Tile17.setIcon(t17);
+      tile18 = g.getAt(2,3);ImageIcon t18 = new ImageIcon(tile18.getCurImage()); Tile18.setIcon(t18);
+      tile19 = g.getAt(2,4);ImageIcon t19 = new ImageIcon(tile19.getCurImage()); Tile19.setIcon(t19);
+      tile20 = g.getAt(2,5);ImageIcon t20 = new ImageIcon(tile20.getCurImage()); Tile20.setIcon(t20);
+      tile21 = g.getAt(2,6);ImageIcon t21 = new ImageIcon(tile21.getCurImage()); Tile21.setIcon(t21);
+      
+      tile22 = g.getAt(3,0);ImageIcon t22 = new ImageIcon(tile22.getCurImage()); Tile22.setIcon(t22);
+      tile23 = g.getAt(3,1);ImageIcon t23 = new ImageIcon(tile23.getCurImage()); Tile23.setIcon(t23);
+      tile24 = g.getAt(3,2);ImageIcon t24 = new ImageIcon(tile24.getCurImage()); Tile24.setIcon(t24);
+      tile25 = g.getAt(3,3);ImageIcon t25 = new ImageIcon(tile25.getCurImage()); Tile25.setIcon(t25);
+      tile26 = g.getAt(3,4);ImageIcon t26 = new ImageIcon(tile26.getCurImage()); Tile26.setIcon(t26);
+      tile27 = g.getAt(3,5);ImageIcon t27 = new ImageIcon(tile27.getCurImage()); Tile27.setIcon(t27);
+      tile28 = g.getAt(3,6);ImageIcon t28 = new ImageIcon(tile28.getCurImage()); Tile28.setIcon(t28);
+      
+      tile29 = g.getAt(4,0);ImageIcon t29 = new ImageIcon(tile29.getCurImage()); Tile29.setIcon(t29);
+      tile30 = g.getAt(4,1);ImageIcon t30 = new ImageIcon(tile30.getCurImage()); Tile30.setIcon(t30);
+      tile31 = g.getAt(4,2);ImageIcon t31 = new ImageIcon(tile31.getCurImage()); Tile31.setIcon(t31);
+      tile32 = g.getAt(4,3);ImageIcon t32 = new ImageIcon(tile32.getCurImage()); Tile32.setIcon(t32);
+      tile33 = g.getAt(4,4);ImageIcon t33 = new ImageIcon(tile33.getCurImage()); Tile33.setIcon(t33);
+      tile34 = g.getAt(4,5);ImageIcon t34 = new ImageIcon(tile34.getCurImage()); Tile34.setIcon(t34);
+      tile35 = g.getAt(4,6);ImageIcon t35 = new ImageIcon(tile35.getCurImage()); Tile35.setIcon(t35);
+      
+      tile36 = g.getAt(5,0);ImageIcon t36 = new ImageIcon(tile36.getCurImage()); Tile36.setIcon(t36);
+      tile37 = g.getAt(5,1);ImageIcon t37 = new ImageIcon(tile37.getCurImage()); Tile37.setIcon(t37);
+      tile38 = g.getAt(5,2);ImageIcon t38 = new ImageIcon(tile38.getCurImage()); Tile38.setIcon(t38);
+      tile39 = g.getAt(5,3);ImageIcon t39 = new ImageIcon(tile39.getCurImage()); Tile39.setIcon(t39);
+      tile40 = g.getAt(5,4);ImageIcon t40 = new ImageIcon(tile40.getCurImage()); Tile40.setIcon(t40);
+      tile41 = g.getAt(5,5);ImageIcon t41 = new ImageIcon(tile41.getCurImage()); Tile41.setIcon(t41);
+      tile42 = g.getAt(5,6);ImageIcon t42 = new ImageIcon(tile42.getCurImage()); Tile42.setIcon(t42);
+      
+      tile43 = g.getAt(6,0);ImageIcon t43 = new ImageIcon(tile43.getCurImage()); Tile43.setIcon(t43);
+      tile44 = g.getAt(6,1);ImageIcon t44 = new ImageIcon(tile44.getCurImage()); Tile44.setIcon(t44);
+      tile45 = g.getAt(6,2);ImageIcon t45 = new ImageIcon(tile45.getCurImage()); Tile45.setIcon(t45);
+      tile46 = g.getAt(6,3);ImageIcon t46 = new ImageIcon(tile46.getCurImage()); Tile46.setIcon(t46);
+      tile47 = g.getAt(6,4);ImageIcon t47 = new ImageIcon(tile47.getCurImage()); Tile47.setIcon(t47);
+      tile48 = g.getAt(6,5);ImageIcon t48 = new ImageIcon(tile48.getCurImage()); Tile48.setIcon(t48);
+      tile49 = g.getAt(6,6);ImageIcon t49 = new ImageIcon(tile49.getCurImage()); Tile49.setIcon(t49);
+      
+      
+      
+      //Code for the spare Tile
+      tile50 = g.getSpare();
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      
+      
+      pack();
+     }
+     
+  }
+
+  class ButtonListener2 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50.rotateRight();
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      pack();
+     }
+     
+  }
   
+    class ButtonListener3 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50.rotateLeft();
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      pack();
+     }
+     
+  }
 
        
  /**

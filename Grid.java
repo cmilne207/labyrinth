@@ -1,4 +1,4 @@
-package gridPopulation;
+//package gridPopulation;
 
 import java.util.Random;
 
@@ -46,8 +46,8 @@ public class Grid
     			}
     			grid[row][col] = inUse;
 			}
-			grid[0][0].setPlayerOneOn(true);
-			grid[6][6].getPlayerTwoOn(true)
+			grid[0][0].setPlayerOneOnTile(true);
+			grid[6][6].setPlayerTwoOnTile(true);
     	}
 		spareTile = newDeck.draw();
     }
@@ -65,5 +65,9 @@ public class Grid
     }
     
     //setters
+    
+ 
+
 
 }
+
