@@ -1,5 +1,3 @@
-//package gridPopulation;
-
 import java.util.Random;
 
 //Rrpresentation of the board
@@ -46,8 +44,6 @@ public class Grid
     			}
     			grid[row][col] = inUse;
 			}
-			grid[0][0].setPlayerOneOnTile(true);
-			grid[6][6].setPlayerTwoOnTile(true);
     	}
 		spareTile = newDeck.draw();
     }
@@ -65,9 +61,114 @@ public class Grid
     }
     
     //setters
+    //set spare
+    public void setSpare(Tile newSpare){
+    	spareTile = newSpare;
+    }
     
- 
-
-
+    //insert alg
+    //needs the tile that is being inserted
+    //		the row and column indexes
+    //		an int describing which side the insert is coming from (needed to determine where to check for a push off)
+    //				1 = top, 2 = right, 3 = bottom, 4 = left
+    public Tile insert(Tile inTile, int row, int col, int side){
+    	//check for player getting pushed off the other side
+    	//top insert check
+    	if(side == 1){
+    		if(grid[6][col].getPlayerOneOn()){
+    			grid[6][col].setPlayerOneOnTile(false);
+    			inTile.setPlayerOneOnTile(true);
+    		}
+    		if(grid[6][col].getPlayerTwoOn()){
+    			grid[6][col].setPlayerTwoOnTile(false);
+    			inTile.setPlayerTwoOnTile(true);
+    		}
+    	}
+    	
+    	//right insert check
+    	else if(side == 2){
+    		if(grid[row][0].getPlayerOneOn()){
+    			grid[row][0].setPlayerOneOnTile(false);
+    			inTile.setPlayerOneOnTile(true);
+    		}
+    		if(grid[row][0].getPlayerTwoOn()){
+    			grid[row][0].setPlayerTwoOnTile(false);
+    			inTile.setPlayerTwoOnTile(true);
+    		}
+    	}
+    	
+    	//bottom insert check
+    	else if(side == 3){
+    		if(grid[0][col].getPlayerOneOn()){
+    			grid[0][col].setPlayerOneOnTile(false);
+    			inTile.setPlayerOneOnTile(true);
+    		}
+    		if(grid[0][col].getPlayerTwoOn()){
+    			grid[0][col].setPlayerTwoOnTile(false);
+    			inTile.setPlayerTwoOnTile(true);
+    		}
+    	}
+    	
+    	//left insert check
+    	else if(side == 4){
+    		if(grid[6][row].getPlayerOneOn()){
+    			grid[6][row].setPlayerOneOnTile(false);
+    			inTile.setPlayerOneOnTile(true);
+    		}
+    		if(grid[6][col].getPlayerTwoOn()){
+    			grid[6][col].setPlayerTwoOnTile(false);
+    			inTile.setPlayerTwoOnTile(true);
+    		}
+    	}
+    	
+    	//rotate the new Tile in
+    	//top insert
+    	if(side == 1){
+    		int start = 6;
+    		Tile tempHolder = grid[start][col];
+    		while (start > 0){
+    			grid[start][col] = grid[start - 1][col];
+    			start--;
+    		}
+    		grid[start][col] = inTile;
+    		return tempHolder;
+    	}
+    	
+    	//right insert
+    	else if(side == 2){
+    		int start = 0;
+    		Tile tempHolder = grid[row][start];
+    		while (start < 6){
+    			grid[row][start] = grid[row][start + 1];
+    			start++;
+    		}
+    		grid[row][start] = inTile;
+    		return tempHolder;
+    	}
+    	
+    	//bottom insert
+    	else if(side == 3){
+    		int start = 0;
+    		Tile tempHolder = grid[start][col];
+    		while (start < 6){
+    			grid[start][col] = grid[start + 1][col];
+    			start++;
+    		}
+    		grid[start][col] = inTile;
+    		return tempHolder;
+    	}
+    	
+    	//left insert
+    	else if(side == 4){
+    		int start = 6;
+    		Tile tempHolder = grid[row][start];
+    		while (start > 0){
+    			grid[row][start] = grid[row][start - 1];
+    			start--;
+    		}
+    		grid[row][start] = inTile;
+    		return tempHolder;
+    	}
+    	return inTile;
+    }
 }
-
