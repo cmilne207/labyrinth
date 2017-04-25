@@ -99,6 +99,16 @@ public class Tile{
 			return curOrient;
 		}
 		
+		//check if player one is on the tile
+		public boolean getPlayerOneOn(){
+			return playerOneOnTile;
+		}
+		
+		//check if player two is on the tile
+		public boolean getPlayerTwoOn(){
+			return playerTwoOnTile;
+		}
+		
 		//return the proper image baised on orientation of the board 
 		//and which player(s) are on the tile
 		public String getCurImage(){
