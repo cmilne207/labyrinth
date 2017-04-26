@@ -46,6 +46,8 @@ public class Grid
 			}
     	}
 		spareTile = newDeck.draw();
+		grid[0][0].setPlayerOneOnTile(true);
+		grid[6][6].setPlayerTwoOnTile(true);
     }
     
     //getters
@@ -170,5 +172,119 @@ public class Grid
     		return tempHolder;
     	}
     	return inTile;
+    }
+    
+    //move alg
+    //finds the specified player on the board
+    //then calls function to recursivly search for the specified row and col
+    //will return true if the path is found and the move is made and false if not
+    public boolean attemptMove(int row, int col, int playerNumber){
+    	//variables
+    	boolean playerFound = false;
+    	int playerRow = 0;
+    	int playerCol = 0;
+    	
+    	
+    	//look for players
+    	//outer loop cycles rows
+	    	while(!playerFound && playerRow < 7){
+	    		//inner loop cycles cols
+	    		while(!playerFound && playerCol < 7){				
+	    			//if player 1 check for player 1
+	    			if(playerNumber == 1){
+	    				playerFound = grid[playerRow][playerCol].getPlayerOneOn();
+	    			}
+	    			
+	    			//if player 2 check for player 2
+	    			else{
+	    				playerFound = grid[playerRow][playerCol].getPlayerTwoOn();
+	    			}
+	    			
+	    			//next col
+	    			//stop if found because we will use these row and col numbers
+	    			if(!playerFound){
+	    				playerCol++;
+	    			}
+	    		}
+	    		
+	    		//next col
+				//stop if found because we will use these row and col numbers
+	    		if(!playerFound){
+	    			playerRow++;
+	    			playerCol = 0;
+	    		}
+	    	}
+    	//recursive path validation
+	    System.out.println(row + "," + col + "," + playerRow + "," + playerCol);
+    	boolean pathFound = recursiveValidation(row, col, playerRow, playerCol, 0);
+    	if(pathFound){
+    		if(playerNumber == 1){
+    			grid[playerRow][playerCol].setPlayerOneOnTile(false);
+    			grid[row][col].setPlayerOneOnTile(true);
+    		}
+    		else{
+    			grid[playerRow][playerCol].setPlayerTwoOnTile(false);
+    			grid[row][col].setPlayerTwoOnTile(true);
+    		}
+    	}
+	    return pathFound; 
+    }
+    
+    //recursive function used to validate moves
+    private boolean recursiveValidation(int row, int col, int curRow, int curCol, int cameFrom){
+    	boolean found = false;
+    	
+    	System.out.println("recursive call");
+    	
+    	//check for match
+    	//break if found
+    	if(row == curRow && col == curCol){
+    		return true;
+    	}
+    	
+    	//test up
+    	if(cameFrom != 1 && curRow != 0){
+    		if (grid[curRow][curCol].getNorth() && grid[curRow - 1][curCol].getSouth()){
+    			found = recursiveValidation(row, col, curRow - 1, curCol, 3);
+    			if(found){
+    				return true;
+    			}
+    		}
+    	}
+    	
+    	//test right
+    	if(cameFrom != 2 && curCol != 6){
+    		if (grid[curRow][curCol].getEast() && grid[curRow][curCol + 1].getWest()){
+    			found = recursiveValidation(row, col, curRow, curCol + 1, 4);
+    			//if not found keep searching
+    			if(found){
+    				return true;
+    			}
+    		}
+    	}
+    	
+    	//test down
+    	if(cameFrom != 3 && curRow != 6){
+    		if (grid[curRow][curCol].getSouth() && grid[curRow + 1][curCol].getNorth()){
+    			found = recursiveValidation(row, col, curRow + 1, curCol, 1);
+    			//if not found keep searching
+    			if(found){
+    				return true;
+    			}
+    		}
+    	}
+    	
+    	//test left
+    	if(cameFrom != 4 && curCol != 0){
+    		if (grid[curRow][curCol].getWest() && grid[curRow][curCol - 1].getEast()){
+    			found = recursiveValidation(row, col, curRow, curCol -1, 2);
+    			//if not found keep searching
+    			if(found){
+    				return true;
+    			}
+    		}
+    	}
+
+    	return false;
     }
 }
