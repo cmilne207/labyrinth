@@ -2,8 +2,8 @@ import java.util.Random;
 
 //Rrpresentation of the board
 //7x7 grid treated as a two dimensional array
-//Joe Pakulski
-//Chris Milne
+//Chris Milne - Primary
+//Joe Pakulski - Secondary
 
 public class Grid 
 {     

@@ -47,7 +47,7 @@ public class Grid_Gui extends JFrame
   //Panels for messages and counters etc.
   private JPanel MoveButton; private JPanel TilePanel50; private JPanel MovePlayerPanel; private JPanel MovePlayerPanel2;
   private JPanel ButtonPanelR; private JPanel ButtonPanelL; JPanel ButtonStart;
-  private JPanel TreasureCard;  private JPanel CounterPanel;
+  private JPanel TreasureCard;  private JPanel CounterPanel; private JPanel WinPanel;
   
   //Images for tiles treasures and blank spaces
   private ImageIcon back = new ImageIcon("Tile1.jpg"); private ImageIcon space = new ImageIcon("space.jpg"); 
@@ -85,9 +85,10 @@ public class Grid_Gui extends JFrame
   
   private JLabel blank = new JLabel(space); private ImageIcon treasure = new ImageIcon("treasure-card-1.jpg"); 
   
-  private JButton MovePlayer; private JLabel Counter1 = new JLabel("Treasure: 0");
+  private JButton MovePlayer; private JLabel Counter1 = new JLabel("Treasure: 0"); JLabel Win = new JLabel("You Won");
   private JButton RotateL; private JButton RotateR; private JLabel Tile50 = new JLabel(back);  private JLabel TreasureL = new JLabel(treasure);
   private JTextField textfield; private JTextField textfield2; private JButton Start;
+  
 
  
   //Creation of the 50 tiles for panels
@@ -101,7 +102,7 @@ public class Grid_Gui extends JFrame
   Tile tile50;
   //Creation the Decks and grid. Was done in start button but was having issues 
   //Creating it here allows every button to interact with it
-  Deck d = new Deck(); Grid g = new Grid(d); //TreasureDeck t = new TreasureDeck();
+  Deck d = new Deck(); Grid g = new Grid(d); int Turn = 1; TreasureDeck t = new TreasureDeck();
  
   //Actual GUI class
   public Grid_Gui()
@@ -187,6 +188,8 @@ public class Grid_Gui extends JFrame
   {
    CounterPanel = new JPanel();
    CounterPanel.add(Counter1);
+   WinPanel = new JPanel();
+   WinPanel.add(Win);
    MovePlayerPanel = new JPanel();
    textfield = new JTextField();
    textfield.setColumns(5);
@@ -649,14 +652,23 @@ public class Grid_Gui extends JFrame
   {
     public void actionPerformed(ActionEvent e)
     {
+    
       String xs = textfield.getText();
       String ys = textfield2.getText();
       
       int x = Integer.parseInt(xs);
       int y = Integer.parseInt(ys);
       
-     
+      if(Turn == 1){
+    
+      g.attemptMove(x,y,1);
+      Turn = 2;
+      }
+      
+      else{
       g.attemptMove(x,y,2);
+      Turn=1;
+      }
       
       
       
@@ -718,6 +730,22 @@ public class Grid_Gui extends JFrame
       tile47 = g.getAt(6,4);ImageIcon t47 = new ImageIcon(tile47.getCurImage()); Tile47.setIcon(t47);
       tile48 = g.getAt(6,5);ImageIcon t48 = new ImageIcon(tile48.getCurImage()); Tile48.setIcon(t48);
       tile49 = g.getAt(6,6);ImageIcon t49 = new ImageIcon(tile49.getCurImage()); Tile49.setIcon(t49);
+      /*
+      if(t<1){
+      
+      remove(blankpanel); remove(blankpanel2); remove(ButtonPanel1); remove(blankpanel3); remove(ButtonPanel2); remove(blankpanel4); remove(ButtonPanel3); remove(blankpanel5); remove(blankpanel6); remove(ButtonStart); remove(blankpanel_2);
+      remove(blankpanel7); remove(TilePanel1); remove(TilePanel2); remove(TilePanel3) ;remove(TilePanel4); remove(TilePanel5); remove(TilePanel6); remove(TilePanel7); remove(blankpanel8);remove(blankpanel_3); remove(TilePanel50); 
+      remove(ButtonPanel4); remove(TilePanel8); remove(TilePanel9); remove(TilePanel10) ;remove(TilePanel11); remove(TilePanel12); remove(TilePanel13); remove(TilePanel14); remove(ButtonPanel5); remove(ButtonPanelL); remove(ButtonPanelR);
+      remove(blankpanel9); remove(TilePanel15); remove(TilePanel16); remove(TilePanel17) ;remove(TilePanel18); remove(TilePanel19); remove(TilePanel20); remove(TilePanel21); remove(blankpanel10); remove(blankpanel_4); remove(blankpanel_5);
+      remove(ButtonPanel6); remove(TilePanel22); remove(TilePanel23); remove(TilePanel24) ;remove(TilePanel25); remove(TilePanel26); remove(TilePanel27); remove(TilePanel28);remove(ButtonPanel7); remove(blankpanel_6); remove(blankpanel_7);
+      remove(blankpanel11); remove(TilePanel29); remove(TilePanel30); remove(TilePanel31) ;remove(TilePanel32); remove(TilePanel33); remove(TilePanel34); remove(TilePanel35);remove(blankpanel12); remove(TreasureCard); remove(CounterPanel);
+      remove(ButtonPanel8); remove(TilePanel36); remove(TilePanel37); remove(TilePanel38) ;remove(TilePanel39); remove(TilePanel40); remove(TilePanel41); remove(TilePanel42);remove(ButtonPanel9);remove(blankpanel_8); remove(blankpanel_9);
+      remove(blankpanel13); remove(TilePanel43); remove(TilePanel44); remove(TilePanel45) ;remove(TilePanel46); remove(TilePanel47); remove(TilePanel48); remove(TilePanel49);remove(blankpanel14); remove(ButtonPanel13); remove(blankpanel_10); 
+      remove(blankpanel15); remove(blankpanel16);remove(ButtonPanel10); remove(blankpanel17); remove(ButtonPanel11); remove(blankpanel18); remove(ButtonPanel12); remove(blankpanel19); remove(blankpanel20); remove(MovePlayerPanel); remove(MovePlayerPanel2);
+      add(WinPanel);
+      }
+      */
+      
       
       pack();
      }

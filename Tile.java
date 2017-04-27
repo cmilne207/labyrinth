@@ -1,6 +1,7 @@
 //Representation of a tile
 //Tile is a part of the maze
 //It has four different directions
+//Chris Milne
 
 public class Tile{     
 		//Variables
