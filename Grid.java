@@ -84,6 +84,7 @@ public class Grid
     		if(grid[6][col].getPlayerTwoOn()){
     			grid[6][col].setPlayerTwoOnTile(false);
     			inTile.setPlayerTwoOnTile(true);
+            
     		}
     	}
     	
@@ -134,6 +135,7 @@ public class Grid
     		}
     		grid[start][col] = inTile;
     		return tempHolder;
+         
     	}
     	
     	//right insert

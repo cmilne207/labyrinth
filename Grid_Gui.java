@@ -77,6 +77,10 @@ public class Grid_Gui extends JFrame
   private JLabel Tile44 = new JLabel(back); private JLabel Tile47 = new JLabel(back); 
   private JLabel Tile46 = new JLabel(back); private JLabel Tile49 = new JLabel(back); 
   private JLabel Tile48 = new JLabel(back); private JButton Move;
+  private JButton MoveD; private JButton MoveL; private JButton MoveR; private JButton MoveU;
+  private JButton MoveD2; private JButton MoveL2; private JButton MoveR2; private JButton MoveU2;
+  private JButton MoveD3; private JButton MoveL3; private JButton MoveR3; private JButton MoveU3;
+
   
   private JLabel blank = new JLabel(space); private ImageIcon treasure = new ImageIcon("Treasure.jpg"); 
   
@@ -94,7 +98,9 @@ public class Grid_Gui extends JFrame
   Tile tile36; Tile tile37; Tile tile38; Tile tile39; Tile tile40; Tile tile41; Tile tile42; 
   Tile tile43; Tile tile44; Tile tile45; Tile tile46; Tile tile47; Tile tile48; Tile tile49; 
   Tile tile50;
+  Deck d = new Deck(); Grid g = new Grid(d);
  
+  
   public Grid_Gui()
   { setTitle("Labrynth Game");
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -185,18 +191,18 @@ public class Grid_Gui extends JFrame
   public void buildButton()
   {
    
-   ButtonPanel1 = new JPanel(); Move = new JButton("Down"); ButtonPanel1.add(Move);
-   ButtonPanel2 = new JPanel(); Move = new JButton("Down"); ButtonPanel2.add(Move);
-   ButtonPanel3 = new JPanel(); Move = new JButton("Down"); ButtonPanel3.add(Move);
-   ButtonPanel4 = new JPanel(); Move = new JButton("-->"); ButtonPanel4.add(Move);
-   ButtonPanel5 = new JPanel(); Move = new JButton("<--"); ButtonPanel5.add(Move);
-   ButtonPanel6 = new JPanel(); Move = new JButton("-->"); ButtonPanel6.add(Move);
-   ButtonPanel7 = new JPanel(); Move = new JButton("<--"); ButtonPanel7.add(Move);
-   ButtonPanel8 = new JPanel(); Move = new JButton("-->"); ButtonPanel8.add(Move);
-   ButtonPanel9 = new JPanel(); Move = new JButton("<--"); ButtonPanel9.add(Move);
-   ButtonPanel10 = new JPanel(); Move = new JButton("^"); ButtonPanel10.add(Move);
-   ButtonPanel11 = new JPanel(); Move = new JButton("^"); ButtonPanel11.add(Move);
-   ButtonPanel12 = new JPanel(); Move = new JButton("^"); ButtonPanel12.add(Move);
+   ButtonPanel1 = new JPanel(); MoveD3 = new JButton("Down"); ButtonPanel1.add(MoveD3);
+   ButtonPanel2 = new JPanel(); MoveD2 = new JButton("Down"); ButtonPanel2.add(MoveD2);
+   ButtonPanel3 = new JPanel(); MoveD = new JButton("Down"); ButtonPanel3.add(MoveD);
+   ButtonPanel4 = new JPanel(); MoveR = new JButton("-->"); ButtonPanel4.add(MoveR);
+   ButtonPanel5 = new JPanel(); MoveL = new JButton("<--"); ButtonPanel5.add(MoveL);
+   ButtonPanel6 = new JPanel(); MoveR2 = new JButton("-->"); ButtonPanel6.add(MoveR2);
+   ButtonPanel7 = new JPanel(); MoveL2 = new JButton("<--"); ButtonPanel7.add(MoveL2);
+   ButtonPanel8 = new JPanel(); MoveR3 = new JButton("-->"); ButtonPanel8.add(MoveR3);
+   ButtonPanel9 = new JPanel(); MoveL3 = new JButton("<--"); ButtonPanel9.add(MoveL3);
+   ButtonPanel10 = new JPanel(); MoveU = new JButton("^"); ButtonPanel10.add(MoveU);
+   ButtonPanel11 = new JPanel(); MoveU2 = new JButton("^"); ButtonPanel11.add(MoveU2);
+   ButtonPanel12 = new JPanel(); MoveU3 = new JButton("^"); ButtonPanel12.add(MoveU3);
    
    ButtonPanelR = new JPanel(); RotateL = new JButton("Left"); ButtonPanelR.add(RotateL);
    ButtonPanelL = new JPanel(); RotateR = new JButton("Right"); ButtonPanelL.add(RotateR);
@@ -206,6 +212,22 @@ public class Grid_Gui extends JFrame
    Start.addActionListener(new ButtonListener1());
    RotateL.addActionListener(new ButtonListener2());
    RotateR.addActionListener(new ButtonListener3());
+   
+   MoveD.addActionListener(new ButtonListener4());
+   MoveR.addActionListener(new ButtonListener5());
+   MoveL.addActionListener(new ButtonListener6());
+   MoveU.addActionListener(new ButtonListener7());
+   
+   MoveD2.addActionListener(new ButtonListener8());
+   MoveR2.addActionListener(new ButtonListener9());
+   MoveL2.addActionListener(new ButtonListener10());
+   MoveU2.addActionListener(new ButtonListener11());
+   
+   MoveD3.addActionListener(new ButtonListener12());
+   MoveR3.addActionListener(new ButtonListener13());
+   MoveL3.addActionListener(new ButtonListener14());
+   MoveU3.addActionListener(new ButtonListener15());
+   
   }
 
    /**
@@ -217,8 +239,8 @@ public class Grid_Gui extends JFrame
     public void actionPerformed(ActionEvent e)
     {
       //Create the Deck and Grid
-      Deck d = new Deck();
-      Grid g = new Grid(d);
+      //Deck d = new Deck();
+      //Grid g = new Grid(d);
       
       //Link the 49 tile labels with the 49 tiles in the grid
       tile1 = g.getAt(0,0);ImageIcon t1 = new ImageIcon(tile1.getCurImage()); Tile.setIcon(t1);
@@ -314,6 +336,306 @@ public class Grid_Gui extends JFrame
      }
      
   }
+  //Button for Third Down Button
+    class ButtonListener4 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,1,5,1);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile6 = g.getAt(0,5);ImageIcon t6 = new ImageIcon(tile6.getCurImage()); Tile6.setIcon(t6);
+      tile13 = g.getAt(1,5);ImageIcon t13 = new ImageIcon(tile13.getCurImage()); Tile13.setIcon(t13);      
+      tile20 = g.getAt(2,5);ImageIcon t20 = new ImageIcon(tile20.getCurImage()); Tile20.setIcon(t20);      
+      tile27 = g.getAt(3,5);ImageIcon t27 = new ImageIcon(tile27.getCurImage()); Tile27.setIcon(t27);      
+      tile34 = g.getAt(4,5);ImageIcon t34 = new ImageIcon(tile34.getCurImage()); Tile34.setIcon(t34);     
+      tile41 = g.getAt(5,5);ImageIcon t41 = new ImageIcon(tile41.getCurImage()); Tile41.setIcon(t41);      
+      tile48 = g.getAt(6,5);ImageIcon t48 = new ImageIcon(tile48.getCurImage()); Tile48.setIcon(t48);
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for First Right
+  class ButtonListener5 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,1,1,4);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      
+      tile8 = g.getAt(1,0);ImageIcon t8 = new ImageIcon(tile8.getCurImage()); Tile8.setIcon(t8);
+      tile9 = g.getAt(1,1);ImageIcon t9 = new ImageIcon(tile9.getCurImage()); Tile9.setIcon(t9);
+      tile10 = g.getAt(1,2);ImageIcon t10 = new ImageIcon(tile10.getCurImage()); Tile10.setIcon(t10);
+      tile11 = g.getAt(1,3);ImageIcon t11 = new ImageIcon(tile11.getCurImage()); Tile11.setIcon(t11);
+      tile12 = g.getAt(1,4);ImageIcon t12 = new ImageIcon(tile12.getCurImage()); Tile12.setIcon(t12);
+      tile13 = g.getAt(1,5);ImageIcon t13 = new ImageIcon(tile13.getCurImage()); Tile13.setIcon(t13);
+      tile14 = g.getAt(1,6);ImageIcon t14 = new ImageIcon(tile14.getCurImage()); Tile14.setIcon(t14);
+      
+
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+
+  //Button for First Left
+  class ButtonListener6 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      
+      tile50 = g.insert(tile50,1,1,2);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      
+      tile8 = g.getAt(1,0);ImageIcon t8 = new ImageIcon(tile8.getCurImage()); Tile8.setIcon(t8);
+      tile9 = g.getAt(1,1);ImageIcon t9 = new ImageIcon(tile9.getCurImage()); Tile9.setIcon(t9);
+      tile10 = g.getAt(1,2);ImageIcon t10 = new ImageIcon(tile10.getCurImage()); Tile10.setIcon(t10);
+      tile11 = g.getAt(1,3);ImageIcon t11 = new ImageIcon(tile11.getCurImage()); Tile11.setIcon(t11);
+      tile12 = g.getAt(1,4);ImageIcon t12 = new ImageIcon(tile12.getCurImage()); Tile12.setIcon(t12);
+      tile13 = g.getAt(1,5);ImageIcon t13 = new ImageIcon(tile13.getCurImage()); Tile13.setIcon(t13);
+      tile14 = g.getAt(1,6);ImageIcon t14 = new ImageIcon(tile14.getCurImage()); Tile14.setIcon(t14);
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+
+  //Button for First Up
+  class ButtonListener7 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      
+      tile50 = g.insert(tile50,1,1,3);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      
+      tile2 = g.getAt(0,1);ImageIcon t2 = new ImageIcon(tile2.getCurImage()); Tile2.setIcon(t2);
+      tile9 = g.getAt(1,1);ImageIcon t9 = new ImageIcon(tile9.getCurImage()); Tile9.setIcon(t9);
+      tile16 = g.getAt(2,1);ImageIcon t16 = new ImageIcon(tile16.getCurImage()); Tile16.setIcon(t16);
+      tile23 = g.getAt(3,1);ImageIcon t23 = new ImageIcon(tile23.getCurImage()); Tile23.setIcon(t23);
+      tile30 = g.getAt(4,1);ImageIcon t30 = new ImageIcon(tile30.getCurImage()); Tile30.setIcon(t30);
+      tile37 = g.getAt(5,1);ImageIcon t37 = new ImageIcon(tile37.getCurImage()); Tile37.setIcon(t37);
+      tile44 = g.getAt(6,1);ImageIcon t44 = new ImageIcon(tile44.getCurImage()); Tile44.setIcon(t44);   
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Second Down
+  class ButtonListener8 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,1,3,1);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile4 = g.getAt(0,3);ImageIcon t4 = new ImageIcon(tile4.getCurImage()); Tile4.setIcon(t4);
+      tile11 = g.getAt(1,3);ImageIcon t11 = new ImageIcon(tile11.getCurImage()); Tile11.setIcon(t11);
+      tile18 = g.getAt(2,3);ImageIcon t18 = new ImageIcon(tile18.getCurImage()); Tile18.setIcon(t18);
+      tile25 = g.getAt(3,3);ImageIcon t25 = new ImageIcon(tile25.getCurImage()); Tile25.setIcon(t25);
+      tile32 = g.getAt(4,3);ImageIcon t32 = new ImageIcon(tile32.getCurImage()); Tile32.setIcon(t32);
+      tile39 = g.getAt(5,3);ImageIcon t39 = new ImageIcon(tile39.getCurImage()); Tile39.setIcon(t39);
+      tile46 = g.getAt(6,3);ImageIcon t46 = new ImageIcon(tile46.getCurImage()); Tile46.setIcon(t46);
+           
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Second Right
+  class ButtonListener9 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,3,1,4);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile22 = g.getAt(3,0);ImageIcon t22 = new ImageIcon(tile22.getCurImage()); Tile22.setIcon(t22);
+      tile23 = g.getAt(3,1);ImageIcon t23 = new ImageIcon(tile23.getCurImage()); Tile23.setIcon(t23);
+      tile24 = g.getAt(3,2);ImageIcon t24 = new ImageIcon(tile24.getCurImage()); Tile24.setIcon(t24);
+      tile25 = g.getAt(3,3);ImageIcon t25 = new ImageIcon(tile25.getCurImage()); Tile25.setIcon(t25);
+      tile26 = g.getAt(3,4);ImageIcon t26 = new ImageIcon(tile26.getCurImage()); Tile26.setIcon(t26);
+      tile27 = g.getAt(3,5);ImageIcon t27 = new ImageIcon(tile27.getCurImage()); Tile27.setIcon(t27);
+      tile28 = g.getAt(3,6);ImageIcon t28 = new ImageIcon(tile28.getCurImage()); Tile28.setIcon(t28);
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Second Left
+  class ButtonListener10 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,3,1,2);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile22 = g.getAt(3,0);ImageIcon t22 = new ImageIcon(tile22.getCurImage()); Tile22.setIcon(t22);
+      tile23 = g.getAt(3,1);ImageIcon t23 = new ImageIcon(tile23.getCurImage()); Tile23.setIcon(t23);
+      tile24 = g.getAt(3,2);ImageIcon t24 = new ImageIcon(tile24.getCurImage()); Tile24.setIcon(t24);
+      tile25 = g.getAt(3,3);ImageIcon t25 = new ImageIcon(tile25.getCurImage()); Tile25.setIcon(t25);
+      tile26 = g.getAt(3,4);ImageIcon t26 = new ImageIcon(tile26.getCurImage()); Tile26.setIcon(t26);
+      tile27 = g.getAt(3,5);ImageIcon t27 = new ImageIcon(tile27.getCurImage()); Tile27.setIcon(t27);
+      tile28 = g.getAt(3,6);ImageIcon t28 = new ImageIcon(tile28.getCurImage()); Tile28.setIcon(t28);
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Second Up
+  class ButtonListener11 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,1,3,3);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile4 = g.getAt(0,3);ImageIcon t4 = new ImageIcon(tile4.getCurImage()); Tile4.setIcon(t4);
+      tile11 = g.getAt(1,3);ImageIcon t11 = new ImageIcon(tile11.getCurImage()); Tile11.setIcon(t11);
+      tile18 = g.getAt(2,3);ImageIcon t18 = new ImageIcon(tile18.getCurImage()); Tile18.setIcon(t18);
+      tile25 = g.getAt(3,3);ImageIcon t25 = new ImageIcon(tile25.getCurImage()); Tile25.setIcon(t25);
+      tile32 = g.getAt(4,3);ImageIcon t32 = new ImageIcon(tile32.getCurImage()); Tile32.setIcon(t32);
+      tile39 = g.getAt(5,3);ImageIcon t39 = new ImageIcon(tile39.getCurImage()); Tile39.setIcon(t39);
+      tile46 = g.getAt(6,3);ImageIcon t46 = new ImageIcon(tile46.getCurImage()); Tile46.setIcon(t46);
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for First Down
+  class ButtonListener12 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,1,1,1);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      
+      tile2 = g.getAt(0,1);ImageIcon t2 = new ImageIcon(tile2.getCurImage()); Tile2.setIcon(t2);
+      tile9 = g.getAt(1,1);ImageIcon t9 = new ImageIcon(tile9.getCurImage()); Tile9.setIcon(t9);
+      tile16 = g.getAt(2,1);ImageIcon t16 = new ImageIcon(tile16.getCurImage()); Tile16.setIcon(t16);
+      tile23 = g.getAt(3,1);ImageIcon t23 = new ImageIcon(tile23.getCurImage()); Tile23.setIcon(t23);
+      tile30 = g.getAt(4,1);ImageIcon t30 = new ImageIcon(tile30.getCurImage()); Tile30.setIcon(t30);
+      tile37 = g.getAt(5,1);ImageIcon t37 = new ImageIcon(tile37.getCurImage()); Tile37.setIcon(t37);
+      tile44 = g.getAt(6,1);ImageIcon t44 = new ImageIcon(tile44.getCurImage()); Tile44.setIcon(t44);
+          //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Last Right
+  class ButtonListener13 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,5,1,4);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile36 = g.getAt(5,0);ImageIcon t36 = new ImageIcon(tile36.getCurImage()); Tile36.setIcon(t36);
+      tile37 = g.getAt(5,1);ImageIcon t37 = new ImageIcon(tile37.getCurImage()); Tile37.setIcon(t37);
+      tile38 = g.getAt(5,2);ImageIcon t38 = new ImageIcon(tile38.getCurImage()); Tile38.setIcon(t38);
+      tile39 = g.getAt(5,3);ImageIcon t39 = new ImageIcon(tile39.getCurImage()); Tile39.setIcon(t39);
+      tile40 = g.getAt(5,4);ImageIcon t40 = new ImageIcon(tile40.getCurImage()); Tile40.setIcon(t40);
+      tile41 = g.getAt(5,5);ImageIcon t41 = new ImageIcon(tile41.getCurImage()); Tile41.setIcon(t41);
+      tile42 = g.getAt(5,6);ImageIcon t42 = new ImageIcon(tile42.getCurImage()); Tile42.setIcon(t42);
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Last Left
+  class ButtonListener14 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,5,1,2);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile36 = g.getAt(5,0);ImageIcon t36 = new ImageIcon(tile36.getCurImage()); Tile36.setIcon(t36);
+      tile37 = g.getAt(5,1);ImageIcon t37 = new ImageIcon(tile37.getCurImage()); Tile37.setIcon(t37);
+      tile38 = g.getAt(5,2);ImageIcon t38 = new ImageIcon(tile38.getCurImage()); Tile38.setIcon(t38);
+      tile39 = g.getAt(5,3);ImageIcon t39 = new ImageIcon(tile39.getCurImage()); Tile39.setIcon(t39);
+      tile40 = g.getAt(5,4);ImageIcon t40 = new ImageIcon(tile40.getCurImage()); Tile40.setIcon(t40);
+      tile41 = g.getAt(5,5);ImageIcon t41 = new ImageIcon(tile41.getCurImage()); Tile41.setIcon(t41);
+      tile42 = g.getAt(5,6);ImageIcon t42 = new ImageIcon(tile42.getCurImage()); Tile42.setIcon(t42);
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  //Button for Last Up
+  class ButtonListener15 implements ActionListener
+  {
+    public void actionPerformed(ActionEvent e)
+    {
+      tile50 = g.insert(tile50,1,5,3);
+      //Link the 49 tile labels with the 49 tiles in the grid
+      tile6 = g.getAt(0,5);ImageIcon t6 = new ImageIcon(tile6.getCurImage()); Tile6.setIcon(t6);
+      tile13 = g.getAt(1,5);ImageIcon t13 = new ImageIcon(tile13.getCurImage()); Tile13.setIcon(t13);      
+      tile20 = g.getAt(2,5);ImageIcon t20 = new ImageIcon(tile20.getCurImage()); Tile20.setIcon(t20);      
+      tile27 = g.getAt(3,5);ImageIcon t27 = new ImageIcon(tile27.getCurImage()); Tile27.setIcon(t27);      
+      tile34 = g.getAt(4,5);ImageIcon t34 = new ImageIcon(tile34.getCurImage()); Tile34.setIcon(t34);     
+      tile41 = g.getAt(5,5);ImageIcon t41 = new ImageIcon(tile41.getCurImage()); Tile41.setIcon(t41);      
+      tile48 = g.getAt(6,5);ImageIcon t48 = new ImageIcon(tile48.getCurImage()); Tile48.setIcon(t48);
+     
+      
+      //Code for the spare Tile
+      ImageIcon tileI = new ImageIcon(tile50.getCurImage());
+      Tile50.setIcon(tileI);
+      
+      pack();
+     }
+     
+  }
+  
+  
+
+  
+
+
+
 
        
  /**
